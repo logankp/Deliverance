@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EEFCFA45-EDEB-45CF-B489-202EB81EC36F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Deliverance</RootNamespace>
+    <AssemblyName>Deliverance</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="OpenMcdf, Version=2.0.5739.40493, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenMcdf.2.0.5739.40493\lib\OpenMcdf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Crc32.cs" />
+    <Compile Include="MsgFile.cs" />
+    <Compile Include="OXCMSG\Properties\MessageProperties.cs" />
+    <Compile Include="OXCMSG\Properties\RecipientProperties.cs" />
+    <Compile Include="OXMSG\EntryStreamData.cs" />
+    <Compile Include="OXMSG\Headers\BaseHeader.cs" />
+    <Compile Include="OXMSG\Headers\TopLevelHeader.cs" />
+    <Compile Include="OXMSG\Message.cs" />
+    <Compile Include="OXMSG\MsgParser.cs" />
+    <Compile Include="OXMSG\NamedPropertyMapper.cs" />
+    <Compile Include="OXMSG\NamedPropertyParser.cs" />
+    <Compile Include="OXMSG\Properties\NamedProperty.cs" />
+    <Compile Include="OXMSG\Properties\PropertyStream.cs" />
+    <Compile Include="OXMSG\Properties\PropertyEntry.cs" />
+    <Compile Include="OXMSG\Properties\PropertyTag.cs" />
+    <Compile Include="OXMSG\Properties\PropertyType.cs" />
+    <Compile Include="OXMSG\Properties\VariableLengthPropertyEntry.cs" />
+    <Compile Include="OXMSG\Recipient.cs" />
+    <Compile Include="OXMSG\StreamReaders\PropertyStreamReader.cs" />
+    <Compile Include="OXMSG\StreamReaders\RecipientReader.cs" />
+    <Compile Include="OXMSG\StreamReaders\VariableLengthStreamReader.cs" />
+    <Compile Include="OXMSG\TypeMapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

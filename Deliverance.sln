@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deliverance", "Deliverance\Deliverance.csproj", "{EEFCFA45-EDEB-45CF-B489-202EB81EC36F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Deliverance.Test", "Deliverance.Test\Deliverance.Test.csproj", "{8D5C2386-C649-4E83-966E-F3E340F14335}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EEFCFA45-EDEB-45CF-B489-202EB81EC36F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEFCFA45-EDEB-45CF-B489-202EB81EC36F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEFCFA45-EDEB-45CF-B489-202EB81EC36F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEFCFA45-EDEB-45CF-B489-202EB81EC36F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D5C2386-C649-4E83-966E-F3E340F14335}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D5C2386-C649-4E83-966E-F3E340F14335}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D5C2386-C649-4E83-966E-F3E340F14335}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D5C2386-C649-4E83-966E-F3E340F14335}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
