@@ -9,7 +9,7 @@ Deliverance can get the following properties from an MSG file:
 - [x] From Address and Display name
 - [x] Subject
 - [x] Plain-text body
-- [ ] HTML body
+- [x] HTML body
 - [ ] Attachments
 
 ### Building

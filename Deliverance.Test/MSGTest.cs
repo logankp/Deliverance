@@ -15,7 +15,7 @@ namespace Deliverance.Test
         public MSGTest()
         {
             _msgFile = new MsgFile();
-            _msgFile.Load(@"TestFiles\TestMessage-default.msg");
+            _msgFile.Load(@"TestFiles\TestMessage-ansi.msg");
         }
 
         [Test]
@@ -25,6 +25,7 @@ namespace Deliverance.Test
             Assert.That(_msgFile.Body, Is.Not.Empty);
             Assert.That(_msgFile.FromAddress, Is.EqualTo("sender@example.com"));
             Assert.That(_msgFile.FromName, Is.EqualTo("Sender"));
+            Assert.That(_msgFile.HTMLBody, Is.Not.Null.Or.Empty);
         }
 
         [Test]

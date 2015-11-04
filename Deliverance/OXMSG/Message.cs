@@ -22,7 +22,22 @@ namespace Deliverance.OXMSG
         /// https://msdn.microsoft.com/en-us/library/ff849785(v=exchg.80).aspx
         /// </summary>       
         const int STORE_UNICODE_OK = 0x00040000;
-        internal int PidTagStoreSupportMask { get; set; }
+        private int PidTagStoreSupportMask = 0x340D;
+
+        /// <summary>
+        /// This property returns true if the PidTagStoreSupportMask property contains STORE_UNICODE_OK
+        /// In other words, is this file Unicode encoded?
+        /// </summary>
+        internal bool IsUnicode
+        {
+            get
+            {
+                if (PropertyStream.Data.Any(x => x.PropertyTag.ID == PidTagStoreSupportMask))
+                    return (BitConverter.ToInt32(PropertyStream.Data.FirstOrDefault(x => x.PropertyTag.ID == PidTagStoreSupportMask).Value, 0)
+                           & STORE_UNICODE_OK) == STORE_UNICODE_OK;
+                return false;
+            }
+        }
 
         //Storages
         //[MS-OXMSG] 2.2

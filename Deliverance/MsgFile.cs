@@ -64,6 +64,26 @@ namespace Deliverance
             }
         }
 
+        public string HTMLBody
+        {
+            get
+            {
+                string htmlBody;
+                if (_message.IsUnicode)
+                {
+                    //for some reason if the message is in unicode the body is in binary ASCII...
+                    htmlBody = Encoding.ASCII.GetString((byte[])_message.PropertyStream.Data.OfType<VariableLengthPropertyEntry>()
+                        .First(x => x.PropertyTag.ID == MessageProperties.PidTagBodyHtml).VariableLengthData);
+                }
+                else
+                {
+                    htmlBody = _message.PropertyStream.Data.OfType<VariableLengthPropertyEntry>()
+                        .First(x => x.PropertyTag.ID == MessageProperties.PidTagBodyHtml).VariableLengthData.ToString();
+                }
+                return htmlBody;
+            }
+        }
+
         private Message _message;
 
         public void Load(string filePath)
