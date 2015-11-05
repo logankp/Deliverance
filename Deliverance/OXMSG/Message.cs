@@ -55,9 +55,8 @@ namespace Deliverance.OXMSG
         /// <summary>
         /// 2.2.2
         /// The Attachment object storage contains streams and substorages that store properties pertaining to one Attachment object.
-        /// TODO: Make an Attachments object
         /// </summary>
-        internal List<object> Attachments { get; set; }
+        internal List<Attachment> Attachments { get; set; }
 
         /// <summary>
         /// 2.3
