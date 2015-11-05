@@ -10,7 +10,7 @@ namespace Deliverance.OXMSG
     /// <summary>
     /// This class will map property types to .Net types
     /// </summary>
-    public class TypeMapper
+    class TypeMapper
     {
         internal static bool IsFixedLength(PropertyType tag)
         {
