@@ -11,10 +11,12 @@ namespace Deliverance
 {
     /// <summary>
     /// This class represents a parsed MSG file.
-    /// TODO: Support HTML bodies
     /// </summary>
     public class MsgFile
     {
+        /// <summary>
+        /// Returns a list of email Recipients.
+        /// </summary>
         public List<Recipient> Recipients
         {
             get
@@ -22,6 +24,10 @@ namespace Deliverance
                 return _message.Recipients;
             }
         }
+
+        /// <summary>
+        /// Returns the sender email address
+        /// </summary>
         public string FromAddress
         {
             //This is messy logic... Since the SMTP address may be empty, we should use the emailaddress field.
@@ -39,6 +45,10 @@ namespace Deliverance
                 return address.VariableLengthData.ToString();
             }
         }
+
+        /// <summary>
+        /// Returns the Display Name of the sender
+        /// </summary>
         public string FromName
         {
             get
@@ -47,6 +57,10 @@ namespace Deliverance
                     .First(x => x.PropertyTag.ID == MessageProperties.PidTagSenderName).VariableLengthData.ToString();
             }
         }
+
+        /// <summary>
+        /// Returns the email subject
+        /// </summary>
         public string Subject
         {
             get
@@ -55,6 +69,10 @@ namespace Deliverance
                     .First(x => x.PropertyTag.ID == MessageProperties.PidTagSubject).VariableLengthData.ToString();
             }
         }
+
+        /// <summary>
+        /// Returns the email body in plain-text
+        /// </summary>
         public string Body
         {
             get
@@ -64,6 +82,9 @@ namespace Deliverance
             }
         }
 
+        /// <summary>
+        /// Returns the HTML body if it exists, null if it doesn't
+        /// </summary>
         public string HTMLBody
         {
             get
@@ -88,6 +109,10 @@ namespace Deliverance
 
         private Message _message;
 
+        /// <summary>
+        /// Loads a .MSG file
+        /// </summary>
+        /// <param name="filePath">The path to the .MSG file</param>
         public void Load(string filePath)
         {
             var msgParser = new MsgParser(filePath);
