@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Crc32.cs" />
     <Compile Include="MsgFile.cs" />
+    <Compile Include="OXCMSG\Properties\AttachmentProperties.cs" />
     <Compile Include="OXCMSG\Properties\MessageProperties.cs" />
     <Compile Include="OXCMSG\Properties\RecipientProperties.cs" />
     <Compile Include="OXMSG\EntryStreamData.cs" />
