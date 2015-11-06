@@ -38,13 +38,11 @@ namespace Deliverance.OXMSG
             var propertyStream = _propStreamReader.ReadPropertyStream();
             message.PropertyStream = propertyStream;
             message.NamedProperties = ParseNamedProperties(propertyStream);
-            message.Recipients = new List<Recipient>();
             for (short i = 0; i < message.PropertyStream.Header.RecipientCount; i++)
             {
                 var recipient = new Recipient() { PropertyStream = _recipientReader.ReadPropertyStream(i) };
                 message.Recipients.Add(recipient);
             }
-            message.Attachments = new List<Attachment>();
             for (short i = 0; i < message.PropertyStream.Header.AttachmentCount; i++)
             {
                 var attachment = new Attachment() { PropertyStream = _attachmentReader.ReadPropertyStream(i) };

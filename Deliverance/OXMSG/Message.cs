@@ -22,7 +22,7 @@ namespace Deliverance.OXMSG
         /// https://msdn.microsoft.com/en-us/library/ff849785(v=exchg.80).aspx
         /// </summary>       
         const int STORE_UNICODE_OK = 0x00040000;
-        private int PidTagStoreSupportMask = 0x340D;
+        private short PidTagStoreSupportMask = 0x340D;
 
         /// <summary>
         /// This property returns true if the PidTagStoreSupportMask property contains STORE_UNICODE_OK
@@ -32,9 +32,11 @@ namespace Deliverance.OXMSG
         {
             get
             {
-                if (PropertyStream.Data.Any(x => x.PropertyTag.ID == PidTagStoreSupportMask))
-                    return (BitConverter.ToInt32(PropertyStream.Data.FirstOrDefault(x => x.PropertyTag.ID == PidTagStoreSupportMask).Value, 0)
-                           & STORE_UNICODE_OK) == STORE_UNICODE_OK;
+                var supportMask = GetProperty(PidTagStoreSupportMask);
+                if (supportMask != null)
+                {
+                    return ((int)supportMask & STORE_UNICODE_OK) == STORE_UNICODE_OK;
+                }
                 return false;
             }
         }
@@ -63,5 +65,11 @@ namespace Deliverance.OXMSG
         /// Exactly one named property mapping storage
         /// </summary>
         internal List<NamedProperty> NamedProperties { get; set; }
+
+        internal Message()
+        {
+            Recipients = new List<Recipient>();
+            Attachments = new List<Attachment>();
+        }
     }
 }
