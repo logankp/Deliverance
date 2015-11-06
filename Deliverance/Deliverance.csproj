@@ -65,6 +65,7 @@
     <Compile Include="OXMSG\Properties\PropertyType.cs" />
     <Compile Include="OXMSG\Properties\VariableLengthPropertyEntry.cs" />
     <Compile Include="OXMSG\Recipient.cs" />
+    <Compile Include="OXMSG\Storage.cs" />
     <Compile Include="OXMSG\StreamReaders\PropertyStreamReader.cs" />
     <Compile Include="OXMSG\StreamReaders\RecipientReader.cs" />
     <Compile Include="OXMSG\StreamReaders\VariableLengthStreamReader.cs" />

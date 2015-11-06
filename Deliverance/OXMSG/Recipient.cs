@@ -22,10 +22,8 @@ namespace Deliverance.OXMSG
     /// <summary>
     /// This class represents an email recipient
     /// </summary>
-    public class Recipient
+    public class Recipient : Storage
     {
-        internal PropertyStream PropertyStream { private get; set; }
-
         /// <summary>
         /// Returns the email address of the recipient
         /// </summary>
@@ -33,8 +31,7 @@ namespace Deliverance.OXMSG
         {
             get
             {
-                return PropertyStream.Data.OfType<VariableLengthPropertyEntry>()
-                    .First(x => x.PropertyTag.ID == RecipientProperties.PidTagSmtpAddress).VariableLengthData.ToString();
+                return GetProperty(RecipientProperties.PidTagSmtpAddress).ToString();
             }
         }
 
@@ -45,8 +42,7 @@ namespace Deliverance.OXMSG
         {
             get
             {
-                return PropertyStream.Data.OfType<VariableLengthPropertyEntry>()
-                    .First(x => x.PropertyTag.ID == RecipientProperties.PidTagDisplayName).VariableLengthData.ToString();
+                return GetProperty(RecipientProperties.PidTagDisplayName).ToString();
             }
         }
 
@@ -57,7 +53,7 @@ namespace Deliverance.OXMSG
         {
             get
             {
-                return (RecipientType)BitConverter.ToInt32(PropertyStream.Data.First(x => x.PropertyTag.ID == RecipientProperties.PidTagRecipientType).Value, 0);
+                return (RecipientType)GetProperty(RecipientProperties.PidTagRecipientType);
             }
         }
     }

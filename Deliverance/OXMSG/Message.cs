@@ -11,7 +11,7 @@ namespace Deliverance.OXMSG
     /// The MS-OXMSG file structure
     /// https://msdn.microsoft.com/en-us/library/cc463912.aspx
     /// </summary>
-    class Message
+    class Message : Storage
     {
         //Property data types
         //[MS-OXCDATA] 2.11.1 https://msdn.microsoft.com/en-us/library/ee157583.aspx
@@ -64,11 +64,5 @@ namespace Deliverance.OXMSG
         /// Exactly one named property mapping storage
         /// </summary>
         internal List<NamedProperty> NamedProperties { get; set; }
-
-        /// <summary>
-        /// 2.4
-        /// Exacly one property stream, and it MUST contain entries for all properties of the message object
-        /// </summary>
-        internal PropertyStream PropertyStream { get; set; }
     }
 }
