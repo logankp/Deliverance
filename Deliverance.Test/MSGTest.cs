@@ -46,8 +46,7 @@ namespace Deliverance.Test
         [Test]
         public void MSGAttachmentsTest()
         {
-            Assert.That(_msgFile.Attachments[0].Extension, Is.EqualTo("xslx"));
-            Assert.That(_msgFile.Attachments[0].FileName, Is.EqualTo("TestAttachment1.xslx"));
+            Assert.That(_msgFile.Attachments[0].FileName, Is.EqualTo("TestAttachment1.xlsx"));
         }
     }
 }

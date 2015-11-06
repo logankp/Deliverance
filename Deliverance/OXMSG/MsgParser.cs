@@ -16,16 +16,17 @@ namespace Deliverance.OXMSG
     /// </summary>
     class MsgParser
     {
-        private CompoundFile _compoundFile;
         private NamedPropertyParser _namedPropertyParser;
         private PropertyStreamReader _propStreamReader;
         private RecipientReader _recipientReader;
+        private AttachmentReader _attachmentReader;
         internal MsgParser(string filePath)
         {
-            _compoundFile = new CompoundFile(filePath);
-            _namedPropertyParser = new NamedPropertyParser(_compoundFile);
-            _propStreamReader = new PropertyStreamReader(_compoundFile);
-            _recipientReader = new RecipientReader(_compoundFile);
+            CompoundFile compoundFile = new CompoundFile(filePath);
+            _namedPropertyParser = new NamedPropertyParser(compoundFile);
+            _propStreamReader = new PropertyStreamReader(compoundFile);
+            _recipientReader = new RecipientReader(compoundFile);
+            _attachmentReader = new AttachmentReader(compoundFile);
         }
 
         /// <summary>
@@ -43,7 +44,12 @@ namespace Deliverance.OXMSG
                 var recipient = new Recipient() { PropertyStream = _recipientReader.ReadPropertyStream(i) };
                 message.Recipients.Add(recipient);
             }
-
+            message.Attachments = new List<Attachment>();
+            for (short i = 0; i < message.PropertyStream.Header.AttachmentCount; i++)
+            {
+                var attachment = new Attachment() { PropertyStream = _attachmentReader.ReadPropertyStream(i) };
+                message.Attachments.Add(attachment);
+            }
             return message;
         }
 

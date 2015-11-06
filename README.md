@@ -10,7 +10,7 @@ Deliverance can get the following properties from an MSG file:
 - [x] Subject
 - [x] Plain-text body
 - [x] HTML body
-- [ ] Attachments
+- [x] Attachments
 
 ### Building
 Clone the project, open and build the solution in Visual Studio.
@@ -27,6 +27,7 @@ Console.WriteLine("Recipient Type: {0}", msg.Recipients[0].RecipientType);
 Console.WriteLine("From: {0} ({1})", msg.FromName, msg.FromAddress);
 Console.WriteLine("Subject: {0}", msg.Subject);
 Console.WriteLine("Body: {0}", msg.Body);
+Console.WriteLine("Attachment name: {0}", msg.Attachments[0].FileName);
 ```
 ### Dependencies
 

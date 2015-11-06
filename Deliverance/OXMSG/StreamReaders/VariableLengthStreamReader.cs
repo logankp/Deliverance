@@ -41,7 +41,7 @@ namespace Deliverance.OXMSG.StreamReaders
                     obj = Encoding.Unicode.GetString(stream.GetData());
                     break;
                 case PropertyType.PtypString8:
-                    obj = Encoding.ASCII.GetString(stream.GetData());
+                    obj = Encoding.Default.GetString(stream.GetData());
                     break;
                 case PropertyType.PtypBinary:
                     obj = stream.GetData(); //binary data. Just return as-is. May be in the following format: https://msdn.microsoft.com/en-us/library/dd947045(v=office.12).aspx
