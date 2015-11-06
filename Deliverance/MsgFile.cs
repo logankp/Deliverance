@@ -32,17 +32,14 @@ namespace Deliverance
         {
             //This is messy logic... Since the SMTP address may be empty, we should use the emailaddress field.
             //The SMTP address field seems to be populated when the email address field contains an exchange address (EX).
-            //I'm sure there's a better way to do this...
             get
             {
-                var address = _message.PropertyStream.Data.OfType<VariableLengthPropertyEntry>()
-                    .FirstOrDefault(x => x.PropertyTag.ID == MessageProperties.PidTagSenderSmtpAddress); //PidTagSenderEmailAddress seems to differ if it comes from exchange
+                var address = _message.GetProperty(MessageProperties.PidTagSenderSmtpAddress);
                 if (address == null)
                 {
-                    address = _message.PropertyStream.Data.OfType<VariableLengthPropertyEntry>()
-                        .FirstOrDefault(x => x.PropertyTag.ID == MessageProperties.PidTagSenderEmailAddress);
+                    address = _message.GetProperty(MessageProperties.PidTagSenderEmailAddress); //PidTagSenderEmailAddress seems to differ if it comes from exchange
                 }
-                return address.VariableLengthData.ToString();
+                return address.ToString();
             }
         }
 
@@ -53,8 +50,7 @@ namespace Deliverance
         {
             get
             {
-                return _message.PropertyStream.Data.OfType<VariableLengthPropertyEntry>()
-                    .First(x => x.PropertyTag.ID == MessageProperties.PidTagSenderName).VariableLengthData.ToString();
+                return _message.GetProperty(MessageProperties.PidTagSenderName).ToString();
             }
         }
 
@@ -65,8 +61,7 @@ namespace Deliverance
         {
             get
             {
-                return _message.PropertyStream.Data.OfType<VariableLengthPropertyEntry>()
-                    .First(x => x.PropertyTag.ID == MessageProperties.PidTagSubject).VariableLengthData.ToString();
+                return _message.GetProperty(MessageProperties.PidTagSubject).ToString();
             }
         }
 
@@ -77,8 +72,7 @@ namespace Deliverance
         {
             get
             {
-                return _message.PropertyStream.Data.OfType<VariableLengthPropertyEntry>()
-                    .First(x => x.PropertyTag.ID == MessageProperties.PidTagBody).VariableLengthData.ToString();
+                return _message.GetProperty(MessageProperties.PidTagBody).ToString();
             }
         }
 
@@ -93,15 +87,13 @@ namespace Deliverance
                 if (_message.IsUnicode)
                 {
                     //for some reason if the message is in unicode the body is in binary ASCII...
-                    var htmlBinary = _message.PropertyStream.Data.OfType<VariableLengthPropertyEntry>()
-                        .FirstOrDefault(x => x.PropertyTag.ID == MessageProperties.PidTagBodyHtml)?.VariableLengthData;
+                    var htmlBinary = _message.GetProperty(MessageProperties.PidTagBodyHtml);
                     if (htmlBinary != null)
                         htmlBody = Encoding.ASCII.GetString((byte[])htmlBinary);
                 }
                 else
                 {
-                    htmlBody = _message.PropertyStream.Data.OfType<VariableLengthPropertyEntry>()
-                        .First(x => x.PropertyTag.ID == MessageProperties.PidTagBodyHtml)?.VariableLengthData.ToString();
+                    htmlBody = _message.GetProperty(MessageProperties.PidTagBodyHtml).ToString();
                 }
                 return htmlBody;
             }
