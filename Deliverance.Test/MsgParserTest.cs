@@ -22,10 +22,10 @@ namespace Deliverance.Test
             PropertyStream ps = msgFile.PropertyStream;
             Assert.That(ps.Header, Is.Not.Null);
             Assert.That(ps.Header.NextRecipientId, Is.EqualTo(3));
-            Assert.That(ps.Header.NextAttachmentId, Is.EqualTo(0));
+            Assert.That(ps.Header.NextAttachmentId, Is.EqualTo(1));
             Assert.That(ps.Header.RecipientCount, Is.EqualTo(3));
-            Assert.That(ps.Header.AttachmentCount, Is.EqualTo(0));
-            Assert.That(ps.NumberOfProperties, Is.EqualTo(22));
+            Assert.That(ps.Header.AttachmentCount, Is.EqualTo(1));
+            Assert.That(ps.NumberOfProperties, Is.EqualTo(23));
         }
 
         [Test]
@@ -36,10 +36,10 @@ namespace Deliverance.Test
             PropertyStream ps = msgFile.PropertyStream;
             Assert.That(ps.Header, Is.Not.Null);
             Assert.That(ps.Header.NextRecipientId, Is.EqualTo(3));
-            Assert.That(ps.Header.NextAttachmentId, Is.EqualTo(0));
+            Assert.That(ps.Header.NextAttachmentId, Is.EqualTo(1));
             Assert.That(ps.Header.RecipientCount, Is.EqualTo(3));
-            Assert.That(ps.Header.AttachmentCount, Is.EqualTo(0));
-            Assert.That(ps.NumberOfProperties, Is.EqualTo(23));
+            Assert.That(ps.Header.AttachmentCount, Is.EqualTo(1));
+            Assert.That(ps.NumberOfProperties, Is.EqualTo(24));
         }
 
         [Test]
@@ -50,10 +50,10 @@ namespace Deliverance.Test
             PropertyStream ps = msgFile.PropertyStream;
             Assert.That(ps.Header, Is.Not.Null);
             Assert.That(ps.Header.NextRecipientId, Is.EqualTo(3));
-            Assert.That(ps.Header.NextAttachmentId, Is.EqualTo(0));
+            Assert.That(ps.Header.NextAttachmentId, Is.EqualTo(1));
             Assert.That(ps.Header.RecipientCount, Is.EqualTo(3));
-            Assert.That(ps.Header.AttachmentCount, Is.EqualTo(0));
-            Assert.That(ps.NumberOfProperties, Is.EqualTo(23));
+            Assert.That(ps.Header.AttachmentCount, Is.EqualTo(1));
+            Assert.That(ps.NumberOfProperties, Is.EqualTo(24));
         }
 
         [Test]

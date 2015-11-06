@@ -25,6 +25,14 @@ namespace Deliverance
             }
         }
 
+        public List<Attachment> Attachments
+        {
+            get
+            {
+                return _message.Attachments;
+            }
+        }
+
         /// <summary>
         /// Returns the sender email address
         /// </summary>

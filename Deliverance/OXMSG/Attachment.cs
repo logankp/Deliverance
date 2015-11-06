@@ -10,10 +10,8 @@ namespace Deliverance.OXMSG
     /// <summary>
     /// This class represents an email attachment
     /// </summary>
-    public class Attachment
+    public class Attachment : Storage
     {
-        internal PropertyStream PropertyStream { private get; set; }
-
         /// <summary>
         /// Returns the name of the atachment
         /// </summary>

@@ -42,5 +42,12 @@ namespace Deliverance.Test
             Assert.That(_msgFile.Recipients[2].EmailAddress, Is.EqualTo("cc1@example.com"));
             Assert.That(_msgFile.Recipients[2].Type, Is.EqualTo(RecipientType.CC));
         }
+
+        [Test]
+        public void MSGAttachmentsTest()
+        {
+            Assert.That(_msgFile.Attachments[0].Extension, Is.EqualTo("xslx"));
+            Assert.That(_msgFile.Attachments[0].FileName, Is.EqualTo("TestAttachment1.xslx"));
+        }
     }
 }
