@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Deliverance")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("A fully managed library for reading Outlook .MSG files")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Logan Paschke")]
 [assembly: AssemblyProduct("Deliverance")]
 [assembly: AssemblyCopyright("Copyright © Logan Paschke 2015")]
 [assembly: AssemblyTrademark("")]
@@ -34,5 +34,6 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyInformationalVersion("1.0.0-alpha")]
 
 [assembly:InternalsVisibleTo("Deliverance.Test")]
