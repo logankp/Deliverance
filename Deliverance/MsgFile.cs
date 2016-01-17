@@ -14,6 +14,13 @@ namespace Deliverance
     /// </summary>
     public class MsgFile
     {
+
+        private string _fromAddress;
+        private string _fromName;
+        private string _subject;
+        private string _body;
+        private string _htmlBody;
+
         /// <summary>
         /// Returns a list of email Recipients.
         /// </summary>
@@ -47,7 +54,12 @@ namespace Deliverance
                 {
                     address = _message.GetProperty(MessageProperties.PidTagSenderEmailAddress); //PidTagSenderEmailAddress seems to differ if it comes from exchange
                 }
-                return address.ToString();
+                _fromAddress = address.ToString();
+                return _fromAddress;
+            }
+            set
+            {
+                _fromAddress = value;
             }
         }
 
@@ -58,7 +70,12 @@ namespace Deliverance
         {
             get
             {
-                return _message.GetProperty(MessageProperties.PidTagSenderName).ToString();
+                _fromName = _message.GetProperty(MessageProperties.PidTagSenderName).ToString();
+                return _fromName;
+            }
+            set
+            {
+                _fromName = value;
             }
         }
 
@@ -69,7 +86,13 @@ namespace Deliverance
         {
             get
             {
-                return _message.GetProperty(MessageProperties.PidTagSubject).ToString();
+                //return _message.GetProperty(MessageProperties.PidTagSubject).ToString();
+                _subject = _message.GetProperty(MessageProperties.PidTagSubject).ToString();
+                return _subject;
+            }
+            set
+            {
+                _subject = value;
             }
         }
 
@@ -80,7 +103,13 @@ namespace Deliverance
         {
             get
             {
-                return _message.GetProperty(MessageProperties.PidTagBody).ToString();
+                //return _message.GetProperty(MessageProperties.PidTagBody).ToString();
+                _body = _message.GetProperty(MessageProperties.PidTagBody).ToString();
+                return _body;
+            }
+            set
+            {
+                _body = value;
             }
         }
 
@@ -103,7 +132,13 @@ namespace Deliverance
                 {
                     htmlBody = _message.GetProperty(MessageProperties.PidTagBodyHtml).ToString();
                 }
-                return htmlBody;
+                //return htmlBody;
+                _htmlBody = htmlBody;
+                return _htmlBody;
+            }
+            set
+            {
+                _htmlBody = value;
             }
         }
 
@@ -117,6 +152,16 @@ namespace Deliverance
         {
             var msgParser = new MsgParser(filePath);
             _message = msgParser.Parse();
+        }
+
+        /// <summary>
+        /// Save a .MSG file to the filesystm
+        /// </summary>
+        /// <param name="filePath">The location to save the file</param>
+        public void Save(string filePath)
+        {
+            var msgParser = new MsgParser(filePath);
+
         }
     }
 }

@@ -58,6 +58,7 @@
     <Compile Include="OXMSG\Headers\TopLevelHeader.cs" />
     <Compile Include="OXMSG\Message.cs" />
     <Compile Include="OXMSG\MsgParser.cs" />
+    <Compile Include="OXMSG\MsgWriter.cs" />
     <Compile Include="OXMSG\NamedPropertyMapper.cs" />
     <Compile Include="OXMSG\NamedPropertyParser.cs" />
     <Compile Include="OXMSG\Properties\NamedProperty.cs" />

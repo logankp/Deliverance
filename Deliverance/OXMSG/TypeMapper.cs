@@ -71,5 +71,19 @@ namespace Deliverance.OXMSG
             }
             return obj;
         }
+
+        internal static byte[] ObjectToByteArray(object data)
+        {
+            //This is gonna be ugly...
+            if (data.GetType() == typeof(int))
+            {
+                return BitConverter.GetBytes((int)data);
+            }
+            if (data.GetType() == typeof(long))
+            {
+                return BitConverter.GetBytes((long)data);
+            }
+            return null;
+        }
     }
 }

@@ -34,5 +34,23 @@ namespace Deliverance.OXMSG
             }
             else { return null; }
         }
+
+        internal void SetProperty(PropertyTag tag, object data)
+        {
+            PropertyEntry entry;
+            if (TypeMapper.IsFixedLength(tag.Type))
+            {
+                entry = new PropertyEntry();
+                entry.PropertyTag = tag;
+                entry.Value = TypeMapper.ObjectToByteArray(data);
+            }
+            else
+            {
+                entry = new VariableLengthPropertyEntry();
+                entry.PropertyTag = tag;
+                (entry as VariableLengthPropertyEntry).VariableLengthData = data;
+                //I need to figure out how to get size... that's going to be painful
+            }
+        }
     }
 }
