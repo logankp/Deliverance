@@ -11,13 +11,18 @@ namespace Deliverance.OXMSG.Properties
     /// </summary>
     class VariableLengthPropertyEntry : PropertyEntry
     {
+        private int _size;
         /// <summary>
         /// This value is interpreted based on the property type, which is specified in the Property Tag field.
         /// If the message contains an embedded message attachment or a storage attachment, this field MUST be set to 0xFFFFFFFF.
         /// Otherwise, the following table shows how this field is interpreted for each property type.
         /// The property types are specified in [MS-OXCDATA] section 2.11.1.
         /// </summary>
-        internal int Size { get { return BitConverter.ToInt32(Value, 0); } }
+        internal int Size
+        {
+            get { return BitConverter.ToInt32(Value, 0); }
+            set { _size = value; }
+        }
 
         /// <summary>
         /// This field MUST be ignored when reading a .msg file.

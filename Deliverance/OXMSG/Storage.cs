@@ -49,7 +49,18 @@ namespace Deliverance.OXMSG
                 entry = new VariableLengthPropertyEntry();
                 entry.PropertyTag = tag;
                 (entry as VariableLengthPropertyEntry).VariableLengthData = data;
-                //I need to figure out how to get size... that's going to be painful
+                if (tag.Type == PropertyType.PtypString)
+                {
+                    (entry as VariableLengthPropertyEntry).Size = data.ToString().Length + 2;
+                }
+                else if (tag.Type == PropertyType.PtypString8)
+                {
+                    (entry as VariableLengthPropertyEntry).Size = data.ToString().Length + 1;
+                }
+                else
+                {
+                    (entry as VariableLengthPropertyEntry).Size = 0; //placeholder for now
+                }
             }
         }
     }
